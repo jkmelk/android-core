@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import com.core.CoreConfig
 import com.core.core.R
-import com.core.presentatin.BaseFragment
-import com.core.presentatin.FragmentResultCallback
+import com.core.presentation.BaseFragment
+import com.core.presentation.FragmentResultCallback
 
 inline fun <reified FRAGMENT : Fragment> Fragment.showFragment(animate: Boolean = true,
                                                                animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,

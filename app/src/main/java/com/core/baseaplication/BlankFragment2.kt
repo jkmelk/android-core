@@ -5,8 +5,8 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import com.core.baseaplication.databinding.FragmentBlank2Binding
-import com.core.presentatin.BaseViewModel
-import com.core.presentatin.BaseVmFragment
+import com.core.presentation.BaseViewModel
+import com.core.presentation.BaseVmFragment
 import com.core.utils.extensions.delayed
 
 const val Some_KEY = "some_key"

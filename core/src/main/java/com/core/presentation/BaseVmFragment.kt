@@ -1,7 +1,6 @@
-package com.core.presentatin
+package com.core.presentation
 
 import androidx.viewbinding.ViewBinding
-import com.core.navigation.showFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.ParameterizedType
 import kotlin.reflect.KClass
