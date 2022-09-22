@@ -1,4 +1,4 @@
-package com.core.presentatin
+package com.core.presentation
 
 import android.os.Bundle
 
