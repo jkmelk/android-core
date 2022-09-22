@@ -1,11 +1,10 @@
 package com.core.api.interceptor.base
 
+import com.core.CoreConfig
 import com.core.HelixApp
 import com.core.api.ApiConstants
 import com.core.manager.getLanguage
 import com.core.prefrences.AppPreferences
-import com.core.prefrences.PreferenceKey
-import com.core.utils.extensions.deviceToken
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -29,8 +28,8 @@ abstract class PublicInterceptor(private val preferences: AppPreferences) : Inte
 
         val paramsUrl = request.url.newBuilder(ApiConstants.BASE_URL + joinToString)
 
-        paramsUrl?.addQueryParameter("applicationVersion", preferences.getString(PreferenceKey.VERSION_NAME))
-        paramsUrl?.addQueryParameter("applicationId", HelixApp.context.deviceToken())
+        paramsUrl?.addQueryParameter("applicationVersion", CoreConfig.VERSION_NAME)
+        paramsUrl?.addQueryParameter("applicationId", CoreConfig.APP_ID)
         request.url.queryParameterNames.forEach {
             paramsUrl?.addQueryParameter(it, request.url.queryParameter(it))
         }

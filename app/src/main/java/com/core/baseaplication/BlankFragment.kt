@@ -19,6 +19,5 @@ class BlankFragment : BaseFragment<FragmentBlankBinding>() {
 
     override fun onFragmentResult(key: String, result: Bundle) {
         super.onFragmentResult(key, result)
-        log("asd") { key }
     }
 }

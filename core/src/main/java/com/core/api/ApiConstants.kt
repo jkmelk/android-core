@@ -1,13 +1,14 @@
 package com.core.api
 
+import com.core.CoreConfig
 import com.core.utils.BuildTypes
 
 
 object ApiConstants {
 
-    private const val BASE_URL_DEV = "https://test-api.fastshift.am/api/"
-    private const val BASE_URL_QA = "https://test-api.fastshift.am/api/"
-    private const val BASE_URL_LIVE = "https://test-api.fastshift.am/api/"
+    private val BASE_URL_DEV = CoreConfig.BASE_URL_DEV
+    private val BASE_URL_QA = CoreConfig.BASE_URL_QA
+    private val BASE_URL_LIVE = CoreConfig.BASE_URL_LIVE
 
     val BASE_URL = when {
         BuildTypes.TYPE_LIVE -> BASE_URL_LIVE
@@ -15,16 +16,3 @@ object ApiConstants {
         else -> BASE_URL_DEV
     }
 }
-
-/**
- * Urls
- */
-const val USER_NAME = "user_name"
-const val PASSWORD = "password"
-const val LOGIN = "login"
-const val REGISTER = "register"
-const val REGISTER_FACEBOOK = "signin/facebook"
-const val REGISTER_VERIFY = "register/verify"
-const val LOGIN_VERIFY = "login/verify"
-const val COUNTRIES = "countries"
-const val COMMUNITIES = "communities"

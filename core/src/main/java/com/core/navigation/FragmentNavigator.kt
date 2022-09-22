@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
+import com.core.CoreConfig
 import com.core.core.R
 import com.core.presentatin.BaseFragment
 import com.core.presentatin.FragmentResultCallback
@@ -14,7 +15,7 @@ import com.core.presentatin.FragmentResultCallback
 inline fun <reified FRAGMENT : Fragment> Fragment.showFragment(animate: Boolean = true,
                                                                animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,
                                                                backStack: Boolean = true,
-                                                               container: Int = 0,
+                                                               container: Int = CoreConfig.MAIN_CONTAINER,
                                                                openType: OpenType = OpenType.ADD,
                                                                vararg arguments: Pair<String, Any?>,
                                                                requestKey: Array<String> = arrayOf()) {
