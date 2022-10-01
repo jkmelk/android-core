@@ -9,6 +9,5 @@ class App : HelixApp() {
     override fun onCreate() {
         super.onCreate()
         initCoreConfig()
-        log { "Print Hello Every One" }
     }
 }
