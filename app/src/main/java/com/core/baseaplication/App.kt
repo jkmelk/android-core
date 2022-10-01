@@ -9,5 +9,4 @@ class App : HelixApp() {
     override fun onCreate() {
         super.onCreate()
         initCoreConfig()
-    log { "added logger functionality" }}
 }
