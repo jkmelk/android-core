@@ -5,7 +5,7 @@ object Versions {
 
     //libs
     val coreKtx = "1.8.0"
-    val appcompat = "1.4.2"
+    val appcompat = "1.5.0"
     val constraintLayout = "2.1.4"
     val material = "1.6.1"
     val coroutines = "1.6.0"

@@ -5,7 +5,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.ParameterizedType
 import kotlin.reflect.KClass
 
-abstract class BaseVmFragment<V : BaseViewModel, B : ViewBinding>() : BaseFragment<B>() {
+abstract class BaseVmFragment<V : BaseViewModel, B : ViewBinding> : BaseFragment<B>() {
 
     val viewModel: V by viewModel(createViewModel())
 

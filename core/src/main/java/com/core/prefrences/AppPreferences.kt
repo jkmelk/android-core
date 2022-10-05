@@ -1,8 +1,6 @@
 package com.core.prefrences
 
 import android.app.Application
-import com.core.prefrences.PreferenceKey
-import com.core.prefrences.SecurePreferences
 import com.orhanobut.hawk.Hawk
 
 class AppPreferences(application: Application) : SecurePreferences(application) {

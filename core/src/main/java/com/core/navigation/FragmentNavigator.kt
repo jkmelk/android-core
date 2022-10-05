@@ -8,9 +8,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import com.core.CoreConfig
-import com.core.core.R
 import com.core.presentation.BaseFragment
 import com.core.presentation.FragmentResultCallback
+import com.core.presentation.dialog.BaseBottomSheet
+import com.yt.core.R
 
 inline fun <reified FRAGMENT : Fragment> Fragment.showFragment(animate: Boolean = true,
                                                                animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,
@@ -34,10 +35,34 @@ inline fun <reified FRAGMENT : Fragment> Fragment.showFragment(animate: Boolean 
     }
 }
 
+inline fun <reified FRAGMENT : BaseBottomSheet<*>> Fragment.presentBottomSheet(vararg arguments: Pair<String, Any?>,
+                                                                               requestKey: Array<String> = arrayOf()) {
+    activity?.let {
+
+        val tag = FRAGMENT::class.java.name
+        val fragmentManager = childFragmentManager
+        var fragment = fragmentManager.findFragmentByTag(tag)
+        fragment = fragmentManager.fragmentFactory.instantiate(context!!.classLoader, tag)
+        fragment.arguments = bundleOf(*arguments)
+        if (fragment is BaseBottomSheet<*>) {
+            fragment.show(fragmentManager, tag)
+        }
+        requestKey.forEach { reqKey ->
+            fragmentManager.setFragmentResultListener(reqKey, this) { key, bundle ->
+                if (this is FragmentResultCallback) {
+                    this.onFragmentResult(key, bundle)
+                }
+            }
+        }
+    } ?: run {
+        throw NoViewAttachedException()
+    }
+}
+
 inline fun <reified FRAGMENT : Fragment> AppCompatActivity.showFragment(animate: Boolean = true,
                                                                         animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,
                                                                         backStack: Boolean = true,
-                                                                        container: Int = 0,
+                                                                        container: Int = CoreConfig.MAIN_CONTAINER,
                                                                         openType: OpenType = OpenType.ADD,
                                                                         vararg arguments: Pair<String, Any?>) {
     showFragment<FRAGMENT>(this, supportFragmentManager, animate, animationType, backStack,

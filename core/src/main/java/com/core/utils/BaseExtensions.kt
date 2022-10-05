@@ -1,4 +1,4 @@
-package com.core.utils.extensions
+package com.yt.utils.extensions
 
 import android.app.Activity
 import android.app.Application

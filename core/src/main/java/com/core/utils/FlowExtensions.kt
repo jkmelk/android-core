@@ -1,9 +1,7 @@
-package com.core.utils.extensions
+package com.core.utils
 
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -18,8 +16,20 @@ fun <T> SharedFlow<T>.subscribe(owner: LifecycleOwner, state: Lifecycle.State = 
     }
 }
 
+fun <T> SharedFlow<T>.subscribe(scope: CoroutineScope, block: (T) -> Unit) {
+    scope.launch {
+        collectLatest { block(it) }
+    }
+}
+
 fun <T> MutableSharedFlow<T>.posValue(owner: LifecycleOwner, data: T) {
     owner.lifecycleScope.launch {
+        emit(data)
+    }
+}
+
+fun <T> MutableSharedFlow<T>.posValue(scope: CoroutineScope, data: T) {
+    scope.launch {
         emit(data)
     }
 }

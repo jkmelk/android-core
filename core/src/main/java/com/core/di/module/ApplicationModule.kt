@@ -1,6 +1,5 @@
 package com.core.di.module
 
-
 import com.core.exceptions.ExceptionHandler
 import com.core.manager.NetworkManager
 import com.core.prefrences.AppPreferences

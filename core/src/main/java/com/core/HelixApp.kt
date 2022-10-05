@@ -11,7 +11,7 @@ import com.core.logger.log
 import com.core.manager.setLocale
 import com.core.prefrences.AppPreferences
 import com.core.prefrences.PreferenceKey
-import com.core.utils.extensions.delayed
+import com.yt.utils.extensions.delayed
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -30,10 +30,10 @@ open class HelixApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        context = this
         if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO) {
             WebView(applicationContext)
         }
-        context = this
         startKoin {
             androidContext(this@HelixApp)
             modules(apiModule + appModule)

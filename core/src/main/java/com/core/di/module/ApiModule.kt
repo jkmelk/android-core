@@ -5,8 +5,8 @@ import com.core.api.ApiConstants
 import com.core.api.interceptor.ConnectionInterceptor
 import com.core.api.interceptor.PrivateHeaderInterceptor
 import com.core.api.interceptor.PublicHeaderInterceptor
-import com.core.core.BuildConfig
 import com.google.gson.GsonBuilder
+import com.yt.core.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

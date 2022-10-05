@@ -1,6 +1,7 @@
 package com.core.utils
 
-import com.core.core.BuildConfig
+import com.yt.core.BuildConfig
+
 
 object BuildTypes {
 

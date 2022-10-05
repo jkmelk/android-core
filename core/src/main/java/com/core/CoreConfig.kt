@@ -10,6 +10,4 @@ object CoreConfig {
     var VERSION_NAME: String = ""
     var VERSION_CODE: Int = 0
     var APP_ID: String = ""
-
-
 }

@@ -1,12 +1,14 @@
-package com.core.baseaplication
+package com.base.applicaton
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.base.applicaton.screen.test_fragment.BlankFragment
 import com.core.navigation.showFragment
+import com.yt.utils.extensions.initStatusBar
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        initStatusBar()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         showFragment<BlankFragment>()
