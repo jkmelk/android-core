@@ -95,6 +95,7 @@ inline fun <reified FRAGMENT> showFragment(context: Context, manager: FragmentMa
         } else
             replace(container, fragment, tag)
         if (backStack)
+            manager.saveBackStack(tag)
             addToBackStack(tag)
     }
 
@@ -107,7 +108,7 @@ inline fun <reified FRAGMENT : BaseFragment<*>> fragment(manager: FragmentManage
 
 inline fun inTransaction(fragmentManager: FragmentManager, animate: Boolean, animationType: AnimationType, transaction: FragmentTransaction.() -> Unit) {
     fragmentManager.commit {
-        setReorderingAllowed(false)
+        setReorderingAllowed(true)
         if (animate) {
             when (animationType) {
                 AnimationType.LEFT_TO_RIGHT -> {

@@ -62,15 +62,13 @@ abstract class BaseFragment<B : ViewBinding> : Fragment(), FragmentResultCallbac
         activity?.supportFragmentManager?.popBackStack()
     }
 
-    fun initResizeMode() {
-        binding.root.setOnApplyWindowInsetsListener { _, windowInsets ->
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                val imeHeight = windowInsets.getInsets(WindowInsets.Type.ime()).bottom
-                binding.root.setPadding(0, 0, 0, imeHeight)
-                windowInsets.getInsets(WindowInsets.Type.ime() or WindowInsets.Type.systemGestures())
-            }
-            windowInsets
+    fun initResizeMode() = binding.root.setOnApplyWindowInsetsListener { _, windowInsets ->
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val imeHeight = windowInsets.getInsets(WindowInsets.Type.ime()).bottom
+            binding.root.setPadding(0, 0, 0, imeHeight)
+            windowInsets.getInsets(WindowInsets.Type.ime() or WindowInsets.Type.systemGestures())
         }
+        windowInsets
     }
 
     private fun initStatusBar() {

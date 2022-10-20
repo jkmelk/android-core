@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_700"
     android:fitsSystemWindows="true"
+    android:id="@+id/some_id"
+    android:gravity="top|center"
+    android:orientation="horizontal"
     tools:context=".screen.test_fragment.BlankFragment">
 
-    <TextView
-        android:id="@+id/test_text"
-        android:layout_width="match_parent"
+   <!-- <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/hello_blank_fragment"
-        android:textColor="@color/white" />
+        android:src="@drawable/ic_launcher_foreground"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotationY="-20"
+        android:src="@drawable/ic_launcher_foreground"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_foreground"/>-->
 
-</FrameLayout>
+
+</LinearLayout>

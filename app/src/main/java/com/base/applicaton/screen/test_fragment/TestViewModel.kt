@@ -14,6 +14,8 @@ class TestViewModel(private val repo: ConfigRepo) : BaseViewModel() {
     private val configFlow = repo.getConfigFlow
     private val _configForUi = MutableSharedFlow<ConfigResponse>()
     val configForUi = _configForUi.asSharedFlow()
+    private val _configForUi2 = MutableSharedFlow<ConfigResponse>()
+    val configForUi2 = _configForUi2.asSharedFlow()
 
     init {
         modifyConfigs()

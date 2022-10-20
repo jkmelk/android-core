@@ -7,6 +7,7 @@ import com.core.navigation.showFragment
 import com.yt.utils.extensions.initStatusBar
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         initStatusBar()
         super.onCreate(savedInstanceState)

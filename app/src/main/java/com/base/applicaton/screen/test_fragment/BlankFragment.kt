@@ -2,12 +2,16 @@ package com.base.applicaton.screen.test_fragment
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import com.base.applicaton.R
 import com.base.applicaton.databinding.FragmentBlankBinding
-import com.core.logger.log
 import com.core.navigation.presentBottomSheet
+import com.core.navigation.showFragment
 import com.core.presentation.BaseVmFragment
 import com.core.utils.subscribe
 import com.data.model.response.ConfigResponse
+import com.yt.utils.extensions.dpToPx
 import com.yt.utils.extensions.onClick
 
 class BlankFragment : BaseVmFragment<TestViewModel, FragmentBlankBinding>() {
@@ -32,10 +36,12 @@ class BlankFragment : BaseVmFragment<TestViewModel, FragmentBlankBinding>() {
     }
 
     private fun handleConfigResult(it: ConfigResponse) = binding.run {
-        testText.text = it.dictionaryUpdated.toString()
+
     }
 
-    override fun onFragmentResult(key: String, result: Bundle) {
-        log { key }
+    override fun onFragmentResult(key: String, result: Bundle) = when (key) {
+        "asddasd" -> {}
+        "qwerer" -> {}
+        else -> {}
     }
 }

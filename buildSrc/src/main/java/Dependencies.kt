@@ -5,7 +5,7 @@ object Dependencies {
     /*kotlin */
     private val kotlinAndroid = arrayListOf(
             "androidx.core:core-ktx:${Versions.coreKtx}",
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}",
     )
 
     /*kotlin */
@@ -48,6 +48,7 @@ object Dependencies {
             "io.coil-kt:coil:${Versions.coil}",
             "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:${Versions.keyboard}",
     )
+
     private val loger = arrayListOf("com.jakewharton.timber:timber:${Versions.timber}")
 
     fun DependencyHandler.kapt(list: List<String>) {

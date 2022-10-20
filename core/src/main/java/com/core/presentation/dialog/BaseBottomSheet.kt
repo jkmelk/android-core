@@ -1,5 +1,6 @@
 package com.core.presentation.dialog
 
+import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -7,6 +8,8 @@ import android.util.DisplayMetrics
 import android.view.*
 import android.widget.FrameLayout
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.widget.ContentFrameLayout
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import com.core.loading_view.LoadingView
@@ -22,9 +25,12 @@ import com.yt.utils.extensions.dpToPx
 import com.yt.utils.extensions.hideKeyBoard
 import org.koin.android.ext.android.inject
 import java.lang.reflect.ParameterizedType
+import kotlin.math.roundToInt
 
 abstract class BaseBottomSheet<B : ViewBinding> : BottomSheetDialogFragment(), FragmentResultCallback {
 
+    private val END_SCALE = 0.9f
+    private var resizeBackGround = false
     protected var hasResizeMode = false
     protected lateinit var binding: B
     protected val preferences by inject<AppPreferences>()
@@ -62,7 +68,7 @@ abstract class BaseBottomSheet<B : ViewBinding> : BottomSheetDialogFragment(), F
         behavior?.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
-    fun initResizeMode() {
+    private fun initResizeMode() {
         binding.root.setOnApplyWindowInsetsListener { _, windowInsets ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 val imeHeight = windowInsets.getInsets(WindowInsets.Type.ime()).bottom
@@ -101,6 +107,7 @@ abstract class BaseBottomSheet<B : ViewBinding> : BottomSheetDialogFragment(), F
             bottomSheet.layoutParams = layoutParams
             behavior?.state = BottomSheetBehavior.STATE_EXPANDED
             behavior?.skipCollapsed = true
+            behavior?.addBottomSheetCallback(bottomShitCallBack)
             bottomSheet.setBackgroundColor(Color.TRANSPARENT)
         }
     }
@@ -120,5 +127,51 @@ abstract class BaseBottomSheet<B : ViewBinding> : BottomSheetDialogFragment(), F
     /*Configure padding top*/
     fun setTopPadding(padding: Int) {
         this.topPadding = padding
+    }
+
+
+    private val bottomShitCallBack = object : BottomSheetBehavior.BottomSheetCallback() {
+
+        override fun onStateChanged(bottomSheet: View, newState: Int) {
+            val root = activity?.findViewById<ContentFrameLayout>(android.R.id.content)
+            val content = root?.getChildAt(0) ?: return
+            if (behavior?.state == BottomSheetBehavior.STATE_HIDDEN && content.scaleX < 1) {
+                ValueAnimator.ofFloat(content.scaleY, 1f).apply {
+                    addUpdateListener {
+                        content.scaleX = animatedValue as Float
+                        content.scaleY = animatedValue as Float
+                    }
+                    duration = 100
+                    start()
+                }
+            }
+        }
+
+        override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            if (resizeBackGround) {
+                resizeBackGround(bottomSheet, slideOffset)
+            }
+        }
+    }
+
+    private fun resizeBackGround(bottomSheet: View, slideOffset: Float) {
+        val diffScaledOffset = slideOffset * (1 - END_SCALE)
+        val offsetScale = 1 - diffScaledOffset
+        val root = activity?.findViewById<ContentFrameLayout>(android.R.id.content)
+        val content = root?.getChildAt(0)
+        if (offsetScale <= 1.019) {
+            content?.scaleY = offsetScale
+            content?.scaleX = offsetScale
+        }
+        val xOffset = bottomSheet.width * slideOffset
+        val xOffsetDiff = (content?.width ?: 1) * diffScaledOffset / 2
+        val xTranslation = xOffset - xOffsetDiff
+        if (content is CardView) {
+            content.radius = (xTranslation / 16).roundToInt().toFloat()
+        }
+    }
+
+    fun setIsResizeEnabled(isEnable: Boolean) {
+        resizeBackGround = isEnable
     }
 }
