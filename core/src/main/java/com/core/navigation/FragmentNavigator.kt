@@ -3,13 +3,15 @@ package com.core.navigation
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
-import androidx.fragment.app.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
 import com.core.HelixApp
-import com.core.logger.log
 import com.core.presentation.BaseFragment
 import com.core.presentation.FragmentResultCallback
 import com.core.presentation.dialog.BaseBottomSheet
-import com.yt.core.R
+import com.ucom.core.R
 
 inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boolean = true,
                                                                   animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,
@@ -19,8 +21,8 @@ inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boole
                                                                   vararg arguments: Pair<String, Any?>,
                                                                   requestKey: Array<String> = arrayOf()) {
     activity?.let {
-        initFragment<FRAGMENT>(it, it.supportFragmentManager, animate, animationType, backStack,
-                container, openType, arguments = arguments)
+        presentFragment<FRAGMENT>(it, it.supportFragmentManager, animate, animationType, backStack,
+                container, openType, arguments = arguments, requestKey)
         requestKey.forEach { reqKey ->
             it.supportFragmentManager.setFragmentResultListener(reqKey, this) { key, bundle ->
                 if (this is FragmentResultCallback) {
@@ -38,6 +40,7 @@ inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boole
 inline fun <reified FRAGMENT : BaseBottomSheet<*>> Fragment.presentBottomSheet(vararg arguments: Pair<String, Any?>,
                                                                                requestKey: Array<String> = arrayOf()) {
     activity?.let {
+
         val tag = FRAGMENT::class.java.name
         val fragmentManager = childFragmentManager
         var fragment = fragmentManager.findFragmentByTag(tag)
@@ -64,27 +67,21 @@ inline fun <reified FRAGMENT : Fragment> AppCompatActivity.presentFragment(anima
                                                                            container: Int = HelixApp.context.getConfig().mainContainer,
                                                                            openType: OpenType = OpenType.ADD,
                                                                            vararg arguments: Pair<String, Any?>) {
-    initFragment<FRAGMENT>(this, supportFragmentManager, animate, animationType, backStack,
+    presentFragment<FRAGMENT>(this, supportFragmentManager, animate, animationType, backStack,
             container, openType, arguments = arguments)
 }
 
+inline fun <reified FRAGMENT : BaseFragment<*>> AppCompatActivity.fragment() = fragment<FRAGMENT>(supportFragmentManager)
 
-inline fun <reified FRAGMENT : BaseFragment<*>> Fragment.fragment(): FRAGMENT? {
-    return activity?.supportFragmentManager?.let {
-        fragment<FRAGMENT>(it)
-    } ?: kotlin.run {
-        null
-//        throw NoViewAttachedException("Activity is null ${this::class.java.name}")
-    }
-}
+inline fun <reified FRAGMENT : BaseFragment<*>> Fragment.fragment() = fragment<FRAGMENT>(childFragmentManager)
 
-inline fun <reified FRAGMENT> initFragment(context: Context, manager: FragmentManager,
-                                           animate: Boolean,
-                                           animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,
-                                           backStack: Boolean,
-                                           container: Int,
-                                           openType: OpenType = OpenType.ADD,
-                                           vararg arguments: Pair<String, Any?>) {
+inline fun <reified FRAGMENT> presentFragment(context: Context, manager: FragmentManager,
+                                              animate: Boolean,
+                                              animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,
+                                              backStack: Boolean,
+                                              container: Int,
+                                              openType: OpenType = OpenType.ADD,
+                                              vararg arguments: Pair<String, Any?>, requestKey: Array<String> = arrayOf()) {
     val tag = FRAGMENT::class.java.name
     var fragment = manager.findFragmentByTag(tag)
 
@@ -93,9 +90,6 @@ inline fun <reified FRAGMENT> initFragment(context: Context, manager: FragmentMa
         manager.beginTransaction().remove(currentFragment).commit()
     }*/
     fragment = manager.fragmentFactory.instantiate(context.classLoader, tag)
-
-
-
     fragment.arguments = bundleOf(*arguments)
     inTransaction(manager, animate, animationType) {
         if (openType == OpenType.ADD) {
@@ -103,6 +97,7 @@ inline fun <reified FRAGMENT> initFragment(context: Context, manager: FragmentMa
         } else
             replace(container, fragment, tag)
         if (backStack)
+            manager.saveBackStack(tag)
             addToBackStack(tag)
     }
 
@@ -155,3 +150,5 @@ inline fun <reified FRAGMENT : BaseFragment<*>> Fragment.popTo() = try {
 } catch (e: IllegalStateException) {
     activity?.supportFragmentManager?.popBackStack()
 }
+
+

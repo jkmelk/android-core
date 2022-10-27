@@ -11,7 +11,7 @@ import com.core.logger.log
 import com.core.manager.setLocale
 import com.core.prefrences.AppPreferences
 import com.core.prefrences.PreferenceKey
-import com.yt.utils.extensions.delayed
+import com.ucom.utils.extensions.delayed
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -43,6 +43,10 @@ abstract class HelixApp : Application() {
                 return "(${element.fileName}:${element.lineNumber})" + element.methodName
             }
         })
+        preferences.putString(PreferenceKey.TOKEN, " ")
+        delayed(5000) {
+            log { preferences.getString(PreferenceKey.VERSION_NAME) }
+        }
     }
 
     override fun attachBaseContext(base: Context?) {

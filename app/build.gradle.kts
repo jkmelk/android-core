@@ -27,7 +27,7 @@ android {
     buildToolsVersion = AppConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId = "com.core.applicaton"
+        applicationId = "am.orange.myorangearmenia"
         minSdkVersion(AppConfig.minSdk)
         targetSdkVersion(AppConfig.targetSdk)
         versionCode = readVersionCode()

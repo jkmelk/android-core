@@ -13,7 +13,7 @@ import androidx.viewbinding.ViewBinding
 import com.core.loading_view.LoadingView
 import com.core.logger.log
 import com.core.prefrences.AppPreferences
-import com.core.utils.hideKeyBoard
+import com.ucom.utils.extensions.hideKeyBoard
 import org.koin.android.ext.android.inject
 import java.lang.reflect.ParameterizedType
 
@@ -69,18 +69,6 @@ abstract class BaseFragment<B : ViewBinding> : Fragment(), FragmentResultCallbac
             windowInsets.getInsets(WindowInsets.Type.ime() or WindowInsets.Type.systemGestures())
         }
         windowInsets
-    }
-
-    private fun initStatusBar() {
-        if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.R)) {
-            try {
-                val backItem = (view as ViewGroup).getChildAt(0)
-                val layoutParams = backItem.layoutParams as ViewGroup.MarginLayoutParams
-                backItem.layoutParams = layoutParams
-            } catch (e: Exception) {
-
-            }
-        }
     }
 
     private val backPressDispatcher = object : OnBackPressedCallback(true) {
