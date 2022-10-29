@@ -1,6 +1,6 @@
 package com.core.utils
 
-import com.ucom.core.BuildConfig
+import com.core.BuildConfig
 
 
 object BuildTypes {

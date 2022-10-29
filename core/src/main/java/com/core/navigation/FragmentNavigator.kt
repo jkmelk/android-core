@@ -11,7 +11,7 @@ import com.core.HelixApp
 import com.core.presentation.BaseFragment
 import com.core.presentation.FragmentResultCallback
 import com.core.presentation.dialog.BaseBottomSheet
-import com.ucom.core.R
+import com.core.R
 
 inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boolean = true,
                                                                   animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,

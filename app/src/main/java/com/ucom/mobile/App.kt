@@ -7,7 +7,7 @@ import com.ucom.mobile.di.viewModelModule
 import com.ucom.mobile.utils.BASE_URL_DEV
 import com.ucom.mobile.utils.BASE_URL_LIVE
 import com.ucom.mobile.utils.BASE_URL_QA
-import com.ucom.utils.extensions.deviceToken
+import com.core.utils.deviceToken
 import org.koin.core.context.loadKoinModules
 
 class App : HelixApp() {

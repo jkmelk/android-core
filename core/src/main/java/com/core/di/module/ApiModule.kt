@@ -1,12 +1,12 @@
 package com.core.di.module
 
 
+import androidx.viewbinding.BuildConfig
 import com.core.api.ApiConstants
 import com.core.api.interceptor.ConnectionInterceptor
 import com.core.api.interceptor.PrivateHeaderInterceptor
 import com.core.api.interceptor.PublicHeaderInterceptor
 import com.google.gson.GsonBuilder
-import com.ucom.core.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

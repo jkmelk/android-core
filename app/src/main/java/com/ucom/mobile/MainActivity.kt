@@ -2,7 +2,7 @@ package com.ucom.mobile
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.ucom.utils.extensions.initStatusBar
+import com.core.utils.initStatusBar
 
 class MainActivity : AppCompatActivity() {
 

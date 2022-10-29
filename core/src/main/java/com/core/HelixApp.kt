@@ -11,7 +11,7 @@ import com.core.logger.log
 import com.core.manager.setLocale
 import com.core.prefrences.AppPreferences
 import com.core.prefrences.PreferenceKey
-import com.ucom.utils.extensions.delayed
+import com.core.utils.delayed
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

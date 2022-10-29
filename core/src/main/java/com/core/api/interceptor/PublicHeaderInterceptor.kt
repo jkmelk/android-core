@@ -8,7 +8,7 @@ import com.core.prefrences.AppPreferences
 import com.core.prefrences.PreferenceKey
 import com.core.utils.LIGHT_MODE
 import com.core.utils.NIGHT_MODE
-import com.ucom.utils.extensions.deviceName
+import com.core.utils.deviceName
 import okhttp3.Request
 
 class PublicHeaderInterceptor(private val preferences: AppPreferences) : PublicInterceptor(preferences) {
