@@ -11,7 +11,6 @@ android {
 
     setCompileSdkVersion(AppConfig.compileSdk)
     buildToolsVersion = AppConfig.buildToolsVersion
-
     defaultConfig {
         minSdkVersion(AppConfig.minSdk)
         targetSdkVersion(AppConfig.targetSdk)

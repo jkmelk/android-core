@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
-import com.ucom.core.R
-import com.ucom.core.databinding.LoadingIndicatorViewBinding
-import com.ucom.utils.extensions.delayed
-import com.ucom.utils.extensions.dpToPx
+import com.core.R
+import com.core.databinding.LoadingIndicatorViewBinding
+import com.core.utils.delayed
+import com.core.utils.dpToPx
 
 class LoadingView(context: Context, attributeSet: AttributeSet? = null) : FrameLayout(context, attributeSet) {
 
