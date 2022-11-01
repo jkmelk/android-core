@@ -16,7 +16,7 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "Ucom"
+rootProject.name = "Android Core"
 include ':app'
 include ':core'
 include ':data'

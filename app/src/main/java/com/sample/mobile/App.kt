@@ -1,12 +1,12 @@
-package com.ucom.mobile
+package com.sample.mobile
 
 import com.core.CoreConfig
 import com.core.HelixApp
 import com.data.di.dataModule
-import com.ucom.mobile.di.viewModelModule
-import com.ucom.mobile.utils.BASE_URL_DEV
-import com.ucom.mobile.utils.BASE_URL_LIVE
-import com.ucom.mobile.utils.BASE_URL_QA
+import com.sample.mobile.di.viewModelModule
+import com.sample.mobile.utils.BASE_URL_DEV
+import com.sample.mobile.utils.BASE_URL_LIVE
+import com.sample.mobile.utils.BASE_URL_QA
 import com.core.utils.deviceToken
 import org.koin.core.context.loadKoinModules
 
