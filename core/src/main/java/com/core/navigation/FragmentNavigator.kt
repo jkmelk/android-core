@@ -18,13 +18,18 @@ inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boole
                                                                   backStack: Boolean = true,
                                                                   container: Int = HelixApp.context.getConfig().mainContainer,
                                                                   openType: OpenType = OpenType.ADD,
+                                                                  useSupportFM: Boolean = true,
                                                                   vararg arguments: Pair<String, Any?>,
                                                                   requestKey: Array<String> = arrayOf()) {
     activity?.let {
-        presentFragment<FRAGMENT>(it, it.supportFragmentManager, animate, animationType, backStack,
+        val manager = if (useSupportFM) {
+            it.supportFragmentManager
+        } else childFragmentManager
+
+        initFragment<FRAGMENT>(it, manager, animate, animationType, backStack,
                 container, openType, arguments = arguments, requestKey)
         requestKey.forEach { reqKey ->
-            it.supportFragmentManager.setFragmentResultListener(reqKey, this) { key, bundle ->
+            manager.setFragmentResultListener(reqKey, this) { key, bundle ->
                 if (this is FragmentResultCallback) {
                     this.onFragmentResult(key, bundle)
                 } else {
@@ -45,7 +50,7 @@ inline fun <reified FRAGMENT : BaseBottomSheet<*>> Fragment.presentBottomSheet(v
         val tag = FRAGMENT::class.java.name
         val fragmentManager = childFragmentManager
         var fragment = fragmentManager.findFragmentByTag(tag)
-        fragment = fragmentManager.fragmentFactory.instantiate(context!!.classLoader, tag)
+        fragment = fragmentManager.fragmentFactory.instantiate(it.classLoader, tag)
         fragment.arguments = bundleOf(*arguments)
         if (fragment is BaseBottomSheet<*>) {
             fragment.show(fragmentManager, tag)
@@ -68,7 +73,7 @@ inline fun <reified FRAGMENT : Fragment> AppCompatActivity.presentFragment(anima
                                                                            container: Int = HelixApp.context.getConfig().mainContainer,
                                                                            openType: OpenType = OpenType.ADD,
                                                                            vararg arguments: Pair<String, Any?>) {
-    presentFragment<FRAGMENT>(this, supportFragmentManager, animate, animationType, backStack,
+    initFragment<FRAGMENT>(this, supportFragmentManager, animate, animationType, backStack,
             container, openType, arguments = arguments)
 }
 
@@ -76,7 +81,7 @@ inline fun <reified FRAGMENT : BaseFragment<*>> AppCompatActivity.fragment() = f
 
 inline fun <reified FRAGMENT : BaseFragment<*>> Fragment.fragment() = fragment<FRAGMENT>(childFragmentManager)
 
-inline fun <reified FRAGMENT> presentFragment(context: Context, manager: FragmentManager,
+inline fun <reified FRAGMENT> initFragment(context: Context, manager: FragmentManager,
                                               animate: Boolean,
                                               animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,
                                               backStack: Boolean,
@@ -98,7 +103,6 @@ inline fun <reified FRAGMENT> presentFragment(context: Context, manager: Fragmen
         } else
             replace(container, fragment, tag)
         if (backStack)
-            manager.saveBackStack(tag)
             addToBackStack(tag)
     }
 

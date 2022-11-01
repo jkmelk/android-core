@@ -12,6 +12,6 @@ class MainActivity : AppCompatActivity() {
         initStatusBar()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presentFragment<SampleFragment>()
+        presentFragment<SampleFragment>(backStack = false, animate = false)
     }
 }

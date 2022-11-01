@@ -4,13 +4,14 @@ package com.sample.mobile.screen.sample
 import android.os.Bundle
 import android.view.View
 import com.core.logger.log
-import com.core.navigation.presentBottomSheet
+import com.core.navigation.presentFragment
 import com.core.presentation.BaseVmFragment
+import com.core.utils.delayed
 import com.core.utils.onClick
 import com.core.utils.subscribe
 import com.data.model.response.ConfigResponse
+import com.sample.mobile.R
 import com.sample.mobile.databinding.FragmentSampleBinding
-import com.sample.mobile.screen.bottom.BottomFragment
 
 class SampleFragment : BaseVmFragment<SampleViewModel, FragmentSampleBinding>() {
 
@@ -22,10 +23,13 @@ class SampleFragment : BaseVmFragment<SampleViewModel, FragmentSampleBinding>() 
 
     private fun initListeners() = binding.run {
         root.onClick { showDialog() }
+        delayed(1000){
+        root.setBackgroundColor(R.color.gray_color)
+        }
     }
 
     private fun showDialog() {
-        presentBottomSheet<BottomFragment>()
+        presentFragment<SampleFragment>()
     }
 
     private fun initObservers() = viewModel.run {
