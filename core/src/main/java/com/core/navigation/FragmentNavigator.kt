@@ -8,10 +8,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import com.core.HelixApp
+import com.core.R
 import com.core.presentation.BaseFragment
 import com.core.presentation.FragmentResultCallback
 import com.core.presentation.dialog.BaseBottomSheet
-import com.core.R
 
 inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boolean = true,
                                                                   animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,
@@ -32,6 +32,7 @@ inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boole
                 }
             }
         }
+
     } ?: run {
         throw NoViewAttachedException("Activity is null ${this::class.java.name}")
     }
