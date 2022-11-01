@@ -23,9 +23,6 @@ class SampleFragment : BaseVmFragment<SampleViewModel, FragmentSampleBinding>() 
 
     private fun initListeners() = binding.run {
         root.onClick { showDialog() }
-        delayed(1000){
-        root.setBackgroundColor(R.color.gray_color)
-        }
     }
 
     private fun showDialog() {
