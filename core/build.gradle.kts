@@ -20,12 +20,8 @@ android {
     buildFeatures { viewBinding = true }
 
     buildTypes {
-        getByName("release") {
-
-        }
-        getByName("debug") {
-
-        }
+        getByName("release") {}
+        getByName("debug") {}
     }
 
     compileOptions {
