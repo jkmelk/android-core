@@ -25,8 +25,9 @@ import java.net.SocketTimeoutException
 
 typealias ViewStateLiveData = MutableLiveData<ViewState>
 
+val globalErrorLiveFlow = MutableSharedFlow<String?>()
+
 abstract class BaseViewModel : ViewModel(), KoinComponent {
-    val globalErrorLiveFlow = MutableSharedFlow<String?>()
 
     private val bgContext = Dispatchers.IO
     private val mainContext = Dispatchers.Main
@@ -52,30 +53,31 @@ abstract class BaseViewModel : ViewModel(), KoinComponent {
         }
     }
 
-    protected open fun onError(appError: AppError) {
-        launchInIO {
+    protected open fun onError(appError: AppError) = launchInIO {
 
-            if (appError.exception is NoConnectionException || appError.exception is SocketTimeoutException || appError.exception is InterruptedIOException) {
-                bgContext.cancel()
-            }
+        if (appError.exception is NoConnectionException ||
+                appError.exception is SocketTimeoutException ||
+                appError.exception is InterruptedIOException) {
+            bgContext.cancel()
+        }
 
-            if (appError.exception is HttpException) {
-                val code = appError.exception.code()
-                if (code == 401 || code == 500) {
-                    globalErrorLiveFlow.emit(appError.message)
-                    return@launchInIO
-                }
-                val fromJson = Gson().fromJson(appError.body, GlobalError::class.java)
-                if (fromJson?.message != null) {
-                    globalErrorLiveFlow.emit(fromJson.message)
-                    return@launchInIO
-                }
-            } else {
+        if (appError.exception is HttpException) {
+            val code = appError.exception.code()
+            if (code == 401 || code == 500) {
                 globalErrorLiveFlow.emit(appError.message)
                 return@launchInIO
             }
+            val fromJson = Gson().fromJson(appError.body, GlobalError::class.java)
+            if (fromJson?.message != null) {
+                globalErrorLiveFlow.emit(fromJson.message)
+                return@launchInIO
+            }
+        } else {
+            globalErrorLiveFlow.emit(appError.message)
+            return@launchInIO
         }
     }
+
 
     private suspend fun <T> withIOContext(handleException: Boolean = true,
                                           block: suspend CoroutineScope.() -> T) {

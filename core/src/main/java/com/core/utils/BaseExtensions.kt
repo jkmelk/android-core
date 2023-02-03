@@ -107,6 +107,10 @@ fun Context.deviceToken(): String = Settings.Secure.getString(
         contentResolver, Settings.Secure.ANDROID_ID
 )
 
+fun Context.getDeviceDensity(): String {
+    return resources.displayMetrics.density.toString()
+}
+
 
 
 

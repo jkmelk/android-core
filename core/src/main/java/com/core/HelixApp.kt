@@ -17,7 +17,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-open class HelixApp : Application() {
+abstract class HelixApp : Application() {
     protected val preferences by inject<AppPreferences>()
 
     companion object {
@@ -43,10 +43,6 @@ open class HelixApp : Application() {
                 return "(${element.fileName}:${element.lineNumber})" + element.methodName
             }
         })
-        preferences.putString(PreferenceKey.TOKEN, " ")
-        delayed(5000) {
-            log { preferences.getString(PreferenceKey.VERSION_NAME) }
-        }
     }
 
     override fun attachBaseContext(base: Context?) {
@@ -57,4 +53,6 @@ open class HelixApp : Application() {
         super.onConfigurationChanged(newConfig)
         setLocale()
     }
+
+    abstract fun getConfig(): CoreConfig
 }

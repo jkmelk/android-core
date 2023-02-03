@@ -13,17 +13,5 @@ class BlankFragment2 : BaseFragment<FragmentBlank2Binding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.root.onClick {
-//            activity?.supportFragmentManager?.restoreBackStack(BlankFragment::class.java.simpleName)
-            activity?.supportFragmentManager?.beginTransaction()?.hide(this)?.setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up)?.commit()
-            delayed(3000) {
-                activity?
-                .supportFragmentManager?
-                .beginTransaction()?
-                .show(this)?
-                .setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up)?
-                .commit()
-            }
-        }
     }
 }

@@ -2,16 +2,11 @@ package com.base.applicaton.screen.test_fragment
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import com.base.applicaton.R
 import com.base.applicaton.databinding.FragmentBlankBinding
 import com.core.navigation.presentBottomSheet
-import com.core.navigation.showFragment
 import com.core.presentation.BaseVmFragment
 import com.core.utils.subscribe
 import com.data.model.response.ConfigResponse
-import com.yt.utils.extensions.dpToPx
 import com.yt.utils.extensions.onClick
 
 class BlankFragment : BaseVmFragment<TestViewModel, FragmentBlankBinding>() {

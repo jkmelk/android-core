@@ -1,5 +1,7 @@
 package com.core.navigation
 
-class NoViewAttachedException() : Exception() {
+import java.io.IOException
 
-}
+class NoViewAttachedException(message: String) : IOException(message)
+
+class InvalidFragmentTypeException(message: String) : IOException(message)
