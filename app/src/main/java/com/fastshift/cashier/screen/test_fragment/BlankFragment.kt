@@ -1,19 +1,14 @@
-package com.base.applicaton.screen.test_fragment
+package com.fastshift.cashier.screen.test_fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
-import com.base.applicaton.databinding.FragmentBlankBinding
+import com.fastshift.cashier.databinding.FragmentBlankBinding
 import com.core.logger.log
-import com.core.navigation.fragment
-import com.core.navigation.presentBottomSheet
 import com.core.navigation.presentFragment
 import com.core.presentation.BaseVmFragment
 import com.core.utils.subscribe
 import com.data.model.response.ConfigResponse
-import com.yt.utils.extensions.delayed
-import com.yt.utils.extensions.onClick
+import com.core.utils.onClick
 
 class BlankFragment : BaseVmFragment<TestViewModel, FragmentBlankBinding>() {
 

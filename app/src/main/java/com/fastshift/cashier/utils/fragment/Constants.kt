@@ -1,4 +1,4 @@
-package com.base.applicaton.utils.fragment
+package com.fastshift.cashier.utils.fragment
 
   const val BASE_URL_DEV = "https://my-api.ucom.am/api/"
   const val BASE_URL_QA = "https://my-api.ucom.am/api/"

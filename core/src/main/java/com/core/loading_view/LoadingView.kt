@@ -10,7 +10,7 @@ import androidx.core.view.isVisible
 import com.yt.core.R
 import com.yt.core.databinding.LoadingIndicatorViewBinding
 import com.yt.utils.extensions.delayed
-import com.yt.utils.extensions.dpToPx
+import com.core.utils.dpToPx
 
 class LoadingView(context: Context, attributeSet: AttributeSet? = null) : FrameLayout(context, attributeSet) {
 

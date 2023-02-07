@@ -1,4 +1,4 @@
-package com.yt.utils.extensions
+package com.core.utils
 
 import android.animation.AnimatorSet
 import android.animation.ArgbEvaluator
@@ -33,6 +33,9 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
+import com.yt.utils.extensions.delayed
+import com.yt.utils.extensions.dpToPx
+import com.yt.utils.extensions.spToPx
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow

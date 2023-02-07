@@ -1,6 +1,6 @@
-package com.base.applicaton.di
+package com.fastshift.cashier.di
 
-import com.base.applicaton.screen.test_fragment.TestViewModel
+import com.fastshift.cashier.screen.test_fragment.TestViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
