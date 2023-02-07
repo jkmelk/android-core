@@ -169,6 +169,7 @@ abstract class BaseBottomSheet<B : ViewBinding> : BottomSheetDialogFragment(), F
         val xTranslation = xOffset - xOffsetDiff
         if (content is CardView) {
             content.radius = (xTranslation / 16).roundToInt().toFloat()
+
         }
     }
 
