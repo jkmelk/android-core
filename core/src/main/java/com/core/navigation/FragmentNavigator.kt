@@ -3,11 +3,9 @@ package com.core.navigation
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.commit
+import androidx.fragment.app.*
 import com.core.HelixApp
+import com.core.logger.log
 import com.core.presentation.BaseFragment
 import com.core.presentation.FragmentResultCallback
 import com.core.presentation.dialog.BaseBottomSheet
@@ -22,7 +20,7 @@ inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boole
                                                                   requestKey: Array<String> = arrayOf()) {
     activity?.let {
         initFragment<FRAGMENT>(it, it.supportFragmentManager, animate, animationType, backStack,
-                container, openType, arguments = arguments, requestKey)
+                container, openType, arguments = arguments)
         requestKey.forEach { reqKey ->
             it.supportFragmentManager.setFragmentResultListener(reqKey, this) { key, bundle ->
                 if (this is FragmentResultCallback) {
@@ -86,7 +84,7 @@ inline fun <reified FRAGMENT> initFragment(context: Context, manager: FragmentMa
                                            backStack: Boolean,
                                            container: Int,
                                            openType: OpenType = OpenType.ADD,
-                                           vararg arguments: Pair<String, Any?>, requestKey: Array<String> = arrayOf()) {
+                                           vararg arguments: Pair<String, Any?>) {
     val tag = FRAGMENT::class.java.name
     var fragment = manager.findFragmentByTag(tag)
 
@@ -95,6 +93,9 @@ inline fun <reified FRAGMENT> initFragment(context: Context, manager: FragmentMa
         manager.beginTransaction().remove(currentFragment).commit()
     }*/
     fragment = manager.fragmentFactory.instantiate(context.classLoader, tag)
+
+
+
     fragment.arguments = bundleOf(*arguments)
     inTransaction(manager, animate, animationType) {
         if (openType == OpenType.ADD) {

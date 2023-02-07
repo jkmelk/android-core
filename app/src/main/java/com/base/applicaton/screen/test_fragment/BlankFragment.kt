@@ -2,18 +2,23 @@ package com.base.applicaton.screen.test_fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import com.base.applicaton.databinding.FragmentBlankBinding
+import com.core.logger.log
+import com.core.navigation.fragment
 import com.core.navigation.presentBottomSheet
+import com.core.navigation.presentFragment
 import com.core.presentation.BaseVmFragment
 import com.core.utils.subscribe
 import com.data.model.response.ConfigResponse
+import com.yt.utils.extensions.delayed
 import com.yt.utils.extensions.onClick
 
 class BlankFragment : BaseVmFragment<TestViewModel, FragmentBlankBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getConfigs()
         initObservers()
         initListeners()
     }
@@ -23,7 +28,7 @@ class BlankFragment : BaseVmFragment<TestViewModel, FragmentBlankBinding>() {
     }
 
     private fun presentDialog() {
-        presentBottomSheet<FullScreenBottomSheetFragment>(requestKey = arrayOf("asdasd"))
+        presentFragment<BlankFragment2>(requestKey = arrayOf("asdasd"))
     }
 
     private fun initObservers() = viewModel.run {
@@ -35,8 +40,7 @@ class BlankFragment : BaseVmFragment<TestViewModel, FragmentBlankBinding>() {
     }
 
     override fun onFragmentResult(key: String, result: Bundle) = when (key) {
-        "asddasd" -> {}
-        "qwerer" -> {}
+        "asddasd" -> log { "asddasd" }
         else -> {}
     }
 }
