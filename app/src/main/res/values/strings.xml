@@ -2,5 +2,6 @@
 
     <string name="app_name">Sample App</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+    <string name="click_me_text"><u>Click me bro</u></string>
+
 </resources>

@@ -1,7 +1,6 @@
 package com.core.di.module
 
 
-import androidx.viewbinding.BuildConfig
 import com.core.api.ApiConstants
 import com.core.api.interceptor.ConnectionInterceptor
 import com.core.api.interceptor.PrivateHeaderInterceptor

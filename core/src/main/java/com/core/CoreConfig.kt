@@ -9,6 +9,7 @@ class CoreConfig private constructor(builder: Builder) {
     val baseUrlLive: String
     val versionName: String
     val versionCode: Int
+    val scale: String
     val appId: String
 
     init {
@@ -18,6 +19,7 @@ class CoreConfig private constructor(builder: Builder) {
         this.baseUrlLive = builder.baseUrlLive
         this.versionName = builder.versionName
         this.versionCode = builder.versionCode
+        this.scale = builder.scale
         this.appId = builder.appId
     }
 
@@ -34,6 +36,8 @@ class CoreConfig private constructor(builder: Builder) {
             private set
         var versionCode: Int = 0
             private set
+        var scale: String = ""
+            private set
         var appId: String = ""
             private set
 
@@ -43,6 +47,7 @@ class CoreConfig private constructor(builder: Builder) {
         fun baseUrlLive(baseUrlLive: String) = apply { this.baseUrlLive = baseUrlLive }
         fun versionName(versionName: String) = apply { this.versionName = versionName }
         fun versionCode(versionCode: Int) = apply { this.versionCode = versionCode }
+        fun scale(scale: String) = apply { this.scale = scale }
         fun appId(appId: String) = apply { this.appId = appId }
         fun build() = CoreConfig(this)
     }

@@ -12,7 +12,7 @@ class BlankFragment2 : BaseFragment<FragmentBlank2Binding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setFragmentResultListener("qwerty") { key, _ ->
+        setFragmentResultListener("qwerty") { key, value ->
             log { "asdsd" }
         }
     }
