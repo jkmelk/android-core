@@ -1,14 +1,14 @@
-package com.fastshift.cashier.screen.test_fragment
+package com.core.screen.test_fragment
 
 import android.os.Bundle
 import android.view.View
-import com.fastshift.cashier.databinding.FragmentBlankBinding
+import com.core.application.databinding.FragmentBlankBinding
 import com.core.logger.log
-import com.core.navigation.presentFragment
+import com.core.navigation.presentBottomSheet
 import com.core.presentation.BaseVmFragment
+import com.core.utils.onClick
 import com.core.utils.subscribe
 import com.data.model.response.ConfigResponse
-import com.core.utils.onClick
 
 class BlankFragment : BaseVmFragment<TestViewModel, FragmentBlankBinding>() {
 
@@ -23,7 +23,7 @@ class BlankFragment : BaseVmFragment<TestViewModel, FragmentBlankBinding>() {
     }
 
     private fun presentDialog() {
-        presentFragment<BlankFragment2>(requestKey = arrayOf("asdasd"))
+        presentBottomSheet<FullScreenBottomSheetFragment>(requestKey = arrayOf("asdasd"))
     }
 
     private fun initObservers() = viewModel.run {

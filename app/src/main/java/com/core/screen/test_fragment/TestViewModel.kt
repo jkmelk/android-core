@@ -1,4 +1,4 @@
-package com.fastshift.cashier.screen.test_fragment
+package com.core.screen.test_fragment
 
 import androidx.lifecycle.viewModelScope
 import com.core.presentation.BaseViewModel

@@ -1,11 +1,11 @@
-package com.fastshift.cashier
+package com.core
 
-import com.core.CoreConfig
-import com.fastshift.cashier.di.viewModelModule
-import com.fastshift.cashier.utils.fragment.BASE_URL_DEV
-import com.fastshift.cashier.utils.fragment.BASE_URL_LIVE
-import com.fastshift.cashier.utils.fragment.BASE_URL_QA
-import com.core.HelixApp
+import com.core.application.BuildConfig
+import com.core.application.R
+import com.core.cashier.di.viewModelModule
+import com.core.utils.fragment.BASE_URL_DEV
+import com.core.utils.fragment.BASE_URL_LIVE
+import com.core.utils.fragment.BASE_URL_QA
 import com.core.prefrences.PreferenceKey
 import com.data.di.dataModule
 import com.yt.utils.extensions.deviceToken

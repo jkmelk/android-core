@@ -27,7 +27,7 @@ android {
     buildToolsVersion = AppConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId = "com.fastshift.applicaton"
+        applicationId = "com.core.applicaton"
         minSdkVersion(AppConfig.minSdk)
         targetSdkVersion(AppConfig.targetSdk)
         versionCode = readVersionCode()
