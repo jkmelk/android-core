@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    Default error messages-->
+    <string name="default_error_message">System Error</string>
+    <string name="server_error">Server Error</string>
+    <string name="no_internet_conntection">Check your internet connection</string>
+    <string name="time_out_error">Request time out</string>
+
+    <string name="prompt_info_title">Ucom</string>
+    <string name="prompt_info_description">Confirm your identity</string>
+    <string name="prompt_info_use_app_password">Cancel</string>
+
+</resources>

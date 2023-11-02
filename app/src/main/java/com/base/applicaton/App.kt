@@ -8,8 +8,8 @@ import com.base.applicaton.utils.fragment.BASE_URL_QA
 import com.core.HelixApp
 import com.core.prefrences.PreferenceKey
 import com.data.di.dataModule
-import com.yt.utils.extensions.deviceToken
-import com.yt.utils.extensions.getDeviceDensity
+import com.core.utils.deviceToken
+import com.core.utils.getDeviceDensity
 import org.koin.core.context.loadKoinModules
 
 class App : HelixApp() {

@@ -7,11 +7,8 @@ import android.webkit.WebView
 import androidx.appcompat.app.AppCompatDelegate
 import com.core.di.module.apiModule
 import com.core.di.module.appModule
-import com.core.logger.log
 import com.core.manager.setLocale
 import com.core.prefrences.AppPreferences
-import com.core.prefrences.PreferenceKey
-import com.yt.utils.extensions.delayed
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

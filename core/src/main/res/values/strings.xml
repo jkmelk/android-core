@@ -1,3 +1,13 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="prompt_info_title">Ucom</string>
+    <string name="prompt_info_description">Նույնականացում</string>
+    <string name="prompt_info_use_app_password">Չեղարկել</string>
+
+    <!--    Default error messages-->
+    <string name="default_error_message">Համակարգի սխալ</string>
+    <string name="server_error">Սերվերի սխալ</string>
+    <string name="no_internet_conntection">Ստուգել ինտերնետ կապի առկայությունը</string>
+    <string name="time_out_error">Հարցման ժամանակը սպառված է</string>
+
 </resources>

@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.*
 import com.core.HelixApp
-import com.core.logger.log
 import com.core.presentation.BaseFragment
 import com.core.presentation.FragmentResultCallback
 import com.core.presentation.dialog.BaseBottomSheet
-import com.yt.core.R
+import com.core.R
 
 inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boolean = true,
                                                                   animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,

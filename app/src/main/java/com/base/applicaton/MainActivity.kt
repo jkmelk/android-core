@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.base.applicaton.screen.test_fragment.BlankFragment
 import com.core.navigation.presentFragment
-import com.yt.utils.extensions.initStatusBar
+import com.core.utils.initStatusBar
 
 class MainActivity : AppCompatActivity() {
 

@@ -9,7 +9,7 @@ import com.core.prefrences.AppPreferences
 import com.core.prefrences.PreferenceKey
 import com.core.utils.LIGHT_MODE
 import com.core.utils.NIGHT_MODE
-import com.yt.utils.extensions.deviceName
+import com.core.utils.deviceName
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response

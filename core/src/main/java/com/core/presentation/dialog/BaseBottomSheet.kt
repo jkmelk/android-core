@@ -20,9 +20,9 @@ import com.core.presentation.ViewState
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.yt.core.R
-import com.yt.utils.extensions.dpToPx
-import com.yt.utils.extensions.hideKeyBoard
+import com.core.R
+import com.core.utils.dpToPx
+import com.core.utils.hideKeyBoard
 import org.koin.android.ext.android.inject
 import java.lang.reflect.ParameterizedType
 import kotlin.math.roundToInt

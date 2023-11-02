@@ -1,4 +1,4 @@
-package com.fastshift.fast_and_shift.data.exceptions
+package com.core.exceptions
 
 import java.io.IOException
 

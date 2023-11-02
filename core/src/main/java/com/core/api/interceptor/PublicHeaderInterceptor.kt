@@ -6,7 +6,7 @@ import com.core.HelixApp
 import com.core.api.interceptor.base.PublicInterceptor
 import com.core.prefrences.AppPreferences
 import com.core.prefrences.PreferenceKey
-import com.yt.utils.extensions.deviceName
+import com.core.utils.deviceName
 import okhttp3.Request
 
 class PublicHeaderInterceptor(private val preferences: AppPreferences) : PublicInterceptor(preferences) {
