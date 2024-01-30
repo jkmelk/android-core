@@ -1,4 +1,4 @@
-package com.yt.utils.extensions
+package com.core.utils
 
 import android.app.Activity
 import android.content.Context

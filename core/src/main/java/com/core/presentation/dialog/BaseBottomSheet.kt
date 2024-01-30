@@ -12,17 +12,17 @@ import androidx.appcompat.widget.ContentFrameLayout
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
+import com.core.R
 import com.core.loading_view.LoadingView
 import com.core.logger.log
 import com.core.prefrences.AppPreferences
 import com.core.presentation.FragmentResultCallback
 import com.core.presentation.ViewState
+import com.core.utils.dpToPx
+import com.core.utils.hideKeyBoard
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.yt.core.R
-import com.yt.utils.extensions.dpToPx
-import com.yt.utils.extensions.hideKeyBoard
 import org.koin.android.ext.android.inject
 import java.lang.reflect.ParameterizedType
 import kotlin.math.roundToInt
@@ -155,19 +155,19 @@ abstract class BaseBottomSheet<B : ViewBinding> : BottomSheetDialogFragment(), F
     }
 
     private fun resizeBackGround(bottomSheet: View, slideOffset: Float) {
-        val diffScaledOffset = slideOffset * (1 - END_SCALE)
+        val diffScaledOffset = slideOffset * (0.98 - END_SCALE)
         val offsetScale = 1 - diffScaledOffset
         val root = activity?.findViewById<ContentFrameLayout>(android.R.id.content)
         val content = root?.getChildAt(0)
         if (offsetScale <= 1.019) {
-            content?.scaleY = offsetScale
-            content?.scaleX = offsetScale
+            content?.scaleY = offsetScale.toFloat()
+            content?.scaleX = offsetScale.toFloat()
         }
         val xOffset = bottomSheet.width * slideOffset
         val xOffsetDiff = (content?.width ?: 1) * diffScaledOffset / 2
         val xTranslation = xOffset - xOffsetDiff
         if (content is CardView) {
-            content.radius = (xTranslation / 16).roundToInt().toFloat()
+            content.radius = (xTranslation / 24).roundToInt().toFloat()
         }
     }
 

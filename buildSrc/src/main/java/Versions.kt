@@ -12,7 +12,7 @@ object Versions {
     val koin = "2.1.6"
     val lifecycle_runtime = "2.6.0-alpha01"
     val lifecycle_viewmodel = "2.5.1"
-    val fragment_ktx = "1.5.2"
+    val fragment_ktx = "1.5.7"
     val activity_ktx = "1.5.1"
     val navigation_ktx = "2.5.1"
     val retrofit = "2.9.0"

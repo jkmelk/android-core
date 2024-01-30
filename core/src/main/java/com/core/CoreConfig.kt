@@ -11,6 +11,7 @@ class CoreConfig private constructor(builder: Builder) {
     val versionCode: Int
     val scale: String
     val appId: String
+    val flavor: String
 
     init {
         this.mainContainer = builder.mainContainer
@@ -21,6 +22,7 @@ class CoreConfig private constructor(builder: Builder) {
         this.versionCode = builder.versionCode
         this.scale = builder.scale
         this.appId = builder.appId
+        this.flavor = builder.flavor
     }
 
     class Builder {
@@ -40,6 +42,8 @@ class CoreConfig private constructor(builder: Builder) {
             private set
         var appId: String = ""
             private set
+        var flavor: String = ""
+            private set
 
         fun mainContainer(mainContainer: Int) = apply { this.mainContainer = mainContainer }
         fun baseUrlDev(baseUrlDev: String) = apply { this.baseUrlDev = baseUrlDev }
@@ -49,6 +53,7 @@ class CoreConfig private constructor(builder: Builder) {
         fun versionCode(versionCode: Int) = apply { this.versionCode = versionCode }
         fun scale(scale: String) = apply { this.scale = scale }
         fun appId(appId: String) = apply { this.appId = appId }
+        fun flavor(flavor: String) = apply { this.flavor = flavor }
         fun build() = CoreConfig(this)
     }
 }

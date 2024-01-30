@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ActionBar">
+        <attr name="title" format="string" />
+        <attr name="hasBack" format="boolean" />
+        <attr name="hasActionButton" format="boolean" />
+        <attr name="bacButton" format="reference" />
+        <attr name="actionButton" format="reference" />
+    </declare-styleable>
+
+</resources>

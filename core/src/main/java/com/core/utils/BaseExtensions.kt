@@ -1,4 +1,4 @@
-package com.yt.utils.extensions
+package com.core.utils
 
 import android.app.Activity
 import android.app.Application
@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.util.TypedValue
 import android.view.View
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -18,10 +19,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import android.provider.Settings
-
 import org.koin.core.context.KoinContextHandler
-
 
 
 internal fun runOnUiThread(action: () -> Unit) {
@@ -110,6 +108,7 @@ fun Context.deviceToken(): String = Settings.Secure.getString(
 fun Context.getDeviceDensity(): String {
     return resources.displayMetrics.density.toString()
 }
+
 
 
 

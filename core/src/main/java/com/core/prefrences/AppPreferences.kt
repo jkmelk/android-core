@@ -17,7 +17,7 @@ class AppPreferences(application: Application) : SecurePreferences(application) 
         return getByteArray(preferenceKey.keyName, defValue)
     }
 
-    fun putByteArray(preferenceKey: PreferenceKey, value: ByteArray) {
+    fun putByteArray(preferenceKey: PreferenceKey, value: ByteArray?) {
         putByteArray(preferenceKey.keyName, value)
     }
 

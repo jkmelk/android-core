@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    Default error messages-->
+    <string name="default_error_message">Ошибка системы</string>
+    <string name="server_error">Ошибка сервера</string>
+    <string name="no_internet_conntection">Проверьте интернет соединение</string>
+    <string name="time_out_error">Время запроса истекло</string>
+
+    <string name="prompt_info_title">Ucom</string>
+    <string name="prompt_info_description">Аутентификация</string>
+    <string name="prompt_info_use_app_password">Отменить</string>
+
+</resources>

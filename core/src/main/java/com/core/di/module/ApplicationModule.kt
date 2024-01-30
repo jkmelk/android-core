@@ -1,5 +1,7 @@
 package com.core.di.module
 
+import com.core.biometric.CryptographyManager
+import com.core.biometric.CryptographyManagerImpl
 import com.core.exceptions.ExceptionHandler
 import com.core.manager.NetworkManager
 import com.core.prefrences.AppPreferences
@@ -20,5 +22,9 @@ val appModule = module {
         NetworkManager(androidApplication())
     }
 
+}
+
+val securityHelperModule = module {
+    single<CryptographyManager> { CryptographyManagerImpl() }
 }
 

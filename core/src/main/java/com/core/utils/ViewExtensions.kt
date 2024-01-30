@@ -1,4 +1,4 @@
-package com.yt.utils.extensions
+package com.core.utils
 
 import android.animation.AnimatorSet
 import android.animation.ArgbEvaluator

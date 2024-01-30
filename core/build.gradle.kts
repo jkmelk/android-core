@@ -1,4 +1,3 @@
-
 import Dependencies.load
 
 plugins {
@@ -17,7 +16,7 @@ android {
         minSdkVersion(AppConfig.minSdk)
         targetSdkVersion(AppConfig.targetSdk)
         vectorDrawables.useSupportLibrary = true
- }
+    }
 
     buildFeatures { viewBinding = true }
 

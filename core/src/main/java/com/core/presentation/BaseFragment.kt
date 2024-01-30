@@ -1,5 +1,6 @@
 package com.core.presentation
 
+import android.app.Application
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,8 +14,9 @@ import androidx.viewbinding.ViewBinding
 import com.core.loading_view.LoadingView
 import com.core.logger.log
 import com.core.prefrences.AppPreferences
-import com.yt.utils.extensions.hideKeyBoard
+import com.core.utils.hideKeyBoard
 import org.koin.android.ext.android.inject
+import org.koin.core.context.KoinContextHandler
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<B : ViewBinding> : Fragment(), FragmentResultCallback {
@@ -23,6 +25,7 @@ abstract class BaseFragment<B : ViewBinding> : Fragment(), FragmentResultCallbac
     protected open var bacPressDispatcher = true
     protected lateinit var binding: B
     protected val preferences by inject<AppPreferences>()
+    val appContext = KoinContextHandler.get().get<Application>()
 
     open fun createBinding(): Class<B> {
         return (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<B>

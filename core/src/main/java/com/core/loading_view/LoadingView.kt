@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
-import com.yt.core.R
-import com.yt.core.databinding.LoadingIndicatorViewBinding
-import com.yt.utils.extensions.delayed
-import com.yt.utils.extensions.dpToPx
+import com.core.R
+import com.core.databinding.LoadingIndicatorViewBinding
+import com.core.utils.delayed
+import com.core.utils.dpToPx
 
 class LoadingView(context: Context, attributeSet: AttributeSet? = null) : FrameLayout(context, attributeSet) {
 
@@ -44,8 +44,8 @@ class LoadingView(context: Context, attributeSet: AttributeSet? = null) : FrameL
     fun hideLoading() = binding.run {
         val animation = AnimationUtils.loadAnimation(context, R.anim.fade_out)
         indicatorView.startAnimation(animation)
-        delayed(900) {
-            isVisible = false
+        isVisible = false
+        delayed(300) {
         }
     }
 }

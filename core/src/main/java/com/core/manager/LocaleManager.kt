@@ -28,7 +28,7 @@ fun Context.setNewLocale(newLocale: Locale): Context {
 fun Context.getLanguage(): String? {
     val prefs = PreferenceManager.getDefaultSharedPreferences(this)
     val currentLocale = resources.getLocale()
-    return if (!prefs.contains(LANGUAGE_KEY)) "hy" else prefs.getString(LANGUAGE_KEY, currentLocale.toString())
+    return if (!prefs.contains(LANGUAGE_KEY)) "en" else prefs.getString(LANGUAGE_KEY, currentLocale.toString())
 }
 
 @SuppressLint("ApplySharedPref")

@@ -15,6 +15,7 @@ const val DEFAULT_TO_DATE_FORMAT_FLOAT_SECONDS = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 const val DEFAULT_TO_DATE_FORMAT_WITH_MILLIS = "HH:mm"
 const val DEFAULT_TO_DATE_FORMAT = "dd.MM.yyyy HH:mm"
 const val FILTER_TO_DATE_FORMAT = "dd.MM.yyyy"
+const val INITIAL_DATE_FORMAT = "yyyy-dd-mm"
 
 val TIMEZONE_UTC: TimeZone = TimeZone.getTimeZone("UTC")
 

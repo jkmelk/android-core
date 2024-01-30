@@ -7,9 +7,10 @@ import com.core.api.ApiConstants
 import com.core.manager.getLanguage
 import com.core.prefrences.AppPreferences
 import com.core.prefrences.PreferenceKey
+import com.core.utils.BuildTypes
 import com.core.utils.LIGHT_MODE
 import com.core.utils.NIGHT_MODE
-import com.yt.utils.extensions.deviceName
+import com.core.utils.deviceName
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -17,19 +18,23 @@ import okhttp3.Response
 abstract class PublicInterceptor(private val preferences: AppPreferences) : Interceptor {
 
     final override fun intercept(chain: Interceptor.Chain): Response {
-
         val request = chain.request()
+
+        if (HelixApp.context.getConfig().flavor == BuildTypes.DEV) {
+            return chain.proceed(request.newBuilder().build())
+        }
 
         val newBuilder = intercept(request.newBuilder())
         val segments = mutableListOf<String>()
         segments.addAll(request.url.pathSegments)
         segments.removeAt(0)
-        segments.add(0, HelixApp.context.getLanguage().toString())
+        segments.removeAt(1)
+//        segments.add(0, HelixApp.context.getLanguage().toString())
         val joinToString = segments.joinToString("/")
         val osVersion = Build.VERSION.SDK_INT.toString()
         val mode = preferences.getInt(PreferenceKey.DISPLAY_MODE, AppCompatDelegate.MODE_NIGHT_NO)
         val modeStr = if (mode == AppCompatDelegate.MODE_NIGHT_NO) LIGHT_MODE else NIGHT_MODE
-        val paramsUrl = request.url.newBuilder(ApiConstants.BASE_URL + joinToString)
+        val paramsUrl = request.url.newBuilder(request.url.toString())
         val config = HelixApp.context.getConfig()
         paramsUrl?.addQueryParameter("mode", modeStr)
         paramsUrl?.addQueryParameter("applicationVersion", config.versionName)

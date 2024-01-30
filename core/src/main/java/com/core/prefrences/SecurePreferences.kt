@@ -26,7 +26,7 @@ abstract class SecurePreferences(application: Application) {
         Hawk.put(key, value)
     }
 
-    protected fun putByteArray(key: String, value: ByteArray) {
+    protected fun putByteArray(key: String, value: ByteArray?) {
         Hawk.put(key, value)
     }
 

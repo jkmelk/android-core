@@ -1,6 +1,6 @@
 package com.core.utils
 
-import com.yt.core.BuildConfig
+import androidx.viewbinding.BuildConfig
 
 
 object BuildTypes {

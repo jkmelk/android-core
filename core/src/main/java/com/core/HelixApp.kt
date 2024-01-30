@@ -7,11 +7,9 @@ import android.webkit.WebView
 import androidx.appcompat.app.AppCompatDelegate
 import com.core.di.module.apiModule
 import com.core.di.module.appModule
-import com.core.logger.log
+import com.core.di.module.securityHelperModule
 import com.core.manager.setLocale
 import com.core.prefrences.AppPreferences
-import com.core.prefrences.PreferenceKey
-import com.yt.utils.extensions.delayed
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -36,7 +34,7 @@ abstract class HelixApp : Application() {
         }
         startKoin {
             androidContext(this@HelixApp)
-            modules(apiModule + appModule)
+            modules(apiModule + appModule + securityHelperModule)
         }
         Timber.plant(object : Timber.DebugTree() {
             override fun createStackElementTag(element: StackTraceElement): String {

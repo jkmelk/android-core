@@ -16,7 +16,7 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "Android Core"
+rootProject.name = "My custom project "
 include ':app'
 include ':core'
 include ':data'

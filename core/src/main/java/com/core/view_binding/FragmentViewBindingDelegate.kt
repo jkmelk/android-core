@@ -1,6 +1,8 @@
 package com.core.view_binding
 
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.Keep
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -9,7 +11,7 @@ import androidx.viewbinding.ViewBinding
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-fun < T : ViewBinding> Fragment.viewBinding(bindingClass: Class<T>) = FragmentViewBindingDelegate(bindingClass, this)
+fun <T : ViewBinding> Fragment.viewBinding(bindingClass: Class<T>) = FragmentViewBindingDelegate(bindingClass, this)
 
 @Keep
 class FragmentViewBindingDelegate<T : ViewBinding>(bindingClass: Class<T>, private val fragment: Fragment) : ReadOnlyProperty<Fragment, T> {
@@ -38,4 +40,10 @@ class FragmentViewBindingDelegate<T : ViewBinding>(bindingClass: Class<T>, priva
         val invoke = bindMethod.invoke(null, thisRef.requireView()) as T
         return invoke.also { this.binding = it }
     }
+}
+
+inline fun <reified B : ViewBinding> ViewGroup.inflateBinding(): B {
+    val method = B::class.java.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
+    val inflater = LayoutInflater.from(this.context)
+    return method.invoke(null, inflater, this, false) as B
 }

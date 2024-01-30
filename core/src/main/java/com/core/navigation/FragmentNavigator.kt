@@ -3,13 +3,15 @@ package com.core.navigation
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
-import androidx.fragment.app.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
 import com.core.HelixApp
-import com.core.logger.log
+import com.core.R
 import com.core.presentation.BaseFragment
 import com.core.presentation.FragmentResultCallback
 import com.core.presentation.dialog.BaseBottomSheet
-import com.yt.core.R
 
 inline fun <reified FRAGMENT : Fragment> Fragment.presentFragment(animate: Boolean = true,
                                                                   animationType: AnimationType = AnimationType.LEFT_TO_RIGHT,
