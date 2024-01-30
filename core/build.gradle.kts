@@ -11,7 +11,6 @@ android {
 
     setCompileSdkVersion(AppConfig.compileSdk)
     buildToolsVersion = AppConfig.buildToolsVersion
-
     defaultConfig {
         minSdkVersion(AppConfig.minSdk)
         targetSdkVersion(AppConfig.targetSdk)
@@ -21,12 +20,8 @@ android {
     buildFeatures { viewBinding = true }
 
     buildTypes {
-        getByName("release") {
-
-        }
-        getByName("debug") {
-
-        }
+        getByName("release") {}
+        getByName("debug") {}
     }
 
     compileOptions {

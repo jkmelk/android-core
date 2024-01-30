@@ -27,7 +27,7 @@ android {
     buildToolsVersion = AppConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId = "com.base.applicaton"
+        applicationId = "com.sample.mobile"
         minSdkVersion(AppConfig.minSdk)
         targetSdkVersion(AppConfig.targetSdk)
         versionCode = readVersionCode()
@@ -89,7 +89,6 @@ android {
     dependencies {
         implementation(project(":core"))
         implementation(project(":data"))
-
         load(Dependencies.appLibraries())
     }
 }

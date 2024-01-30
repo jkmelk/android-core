@@ -74,18 +74,6 @@ abstract class BaseFragment<B : ViewBinding> : Fragment(), FragmentResultCallbac
         windowInsets
     }
 
-    private fun initStatusBar() {
-        if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.R)) {
-            try {
-                val backItem = (view as ViewGroup).getChildAt(0)
-                val layoutParams = backItem.layoutParams as ViewGroup.MarginLayoutParams
-                backItem.layoutParams = layoutParams
-            } catch (e: Exception) {
-
-            }
-        }
-    }
-
     private val backPressDispatcher = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             dispatchBackPressed()
