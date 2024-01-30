@@ -1,2 +1,2 @@
-package com.core.cashier.utils.fragment
+package com.core.utils.fragment
 
